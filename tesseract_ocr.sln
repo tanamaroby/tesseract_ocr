@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "tesseract_ocr", "tesseract_ocr.pyproj", "{2A5591F7-D8EC-4A10-BB55-EECA62B1AC36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A5591F7-D8EC-4A10-BB55-EECA62B1AC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5591F7-D8EC-4A10-BB55-EECA62B1AC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C2AC155-0494-48D3-ADB3-659E3C29C384}
+	EndGlobalSection
+EndGlobal
