@@ -23,13 +23,14 @@ img = cv2.imread('images/page_1.png') # Path to image file
 pre_processor = preprocessor.preprocessor() # Pre-processor
 image_boxer = imageboxer.imageboxer()
 
-# Process from image to string and print out
+# Process from image to string and write into file
 preprocessed_image = pre_processor.pre_process(img)
 boxed_image = image_boxer.box_image(img)
 output = pytesseract.image_to_string(preprocessed_image)
-print(output)
+
+with open('generated/text/output.txt', 'w') as file:
+    file.write(output)
 
 # Save preprocessed images for debugging
-cv2.imwrite("generated/preprocessed_image.png", preprocessed_image)
-cv2.imwrite("generated/boxed_image.png", boxed_image)
-cv2.waitKey(0)
+cv2.imwrite("generated/images/preprocessed_image.png", preprocessed_image)
+cv2.imwrite("generated/images/boxed_image.png", boxed_image)

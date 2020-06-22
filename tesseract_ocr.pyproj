@@ -28,6 +28,20 @@
     <Compile Include="main.py" />
     <Compile Include="preprocessor.py" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="documents\" />
+    <Folder Include="generated\" />
+    <Folder Include="generated\images\" />
+    <Folder Include="generated\text\" />
+    <Folder Include="images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="documents\Invoice.pdf" />
+    <Content Include="generated\images\boxed_image.png" />
+    <Content Include="generated\images\preprocessed_image.png" />
+    <Content Include="generated\text\output.txt" />
+    <Content Include="images\page_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
