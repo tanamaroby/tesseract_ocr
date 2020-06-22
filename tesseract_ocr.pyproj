@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2a5591f7-d8ec-4a10-bb55-eeca62b1ac36</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tesseract_ocr.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>tesseract_ocr</Name>
     <RootNamespace>tesseract_ocr</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,8 +25,8 @@
     <Compile Include="imageboxer.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="main.py" />
     <Compile Include="preprocessor.py" />
-    <Compile Include="tesseract_ocr.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

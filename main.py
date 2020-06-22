@@ -10,9 +10,9 @@ import imageboxer
 
 # Converting PDF to PNG when necessary
 pages = convert_from_path('documents/Invoice.pdf')
-image_counter = 1
 
 # In the case of multiple pages
+image_counter = 1
 for page in pages:
     filename = "page_" + str(image_counter) + ".png"
     page.save('images/' + filename, 'PNG')
