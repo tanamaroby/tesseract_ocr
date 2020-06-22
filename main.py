@@ -5,8 +5,9 @@ import numpy as np
 from pdf2image import convert_from_path
 
 # Self-defined classes imports
-import preprocessor
+import imagepreprocessor
 import imageboxer
+import imageorientation
 
 # Converting PDF to PNG when necessary
 pages = convert_from_path('documents/Invoice.pdf')
@@ -20,13 +21,17 @@ for page in pages:
 
 # Initialize tools
 img = cv2.imread('images/page_1.png') # Path to image file
-pre_processor = preprocessor.preprocessor() # Pre-processor
-image_boxer = imageboxer.imageboxer()
+image_preprocessor = imagepreprocessor.imagepreprocessor() # Pre-processor
+image_boxer = imageboxer.imageboxer() # Boxer
+image_orientation = imageorientation.imageorientation() # Detect orientation
 
 # Process from image to string and write into file
-preprocessed_image = pre_processor.pre_process(img)
+preprocessed_image = image_preprocessor.preprocess(img)
 boxed_image = image_boxer.box_image(img)
 output = pytesseract.image_to_string(preprocessed_image)
+
+# Detect skew
+image_orientation.detect_angle(img)
 
 with open('generated/text/output.txt', 'w') as file:
     file.write(output)

@@ -1,6 +1,6 @@
 import cv2
 
-class preprocessor:
+class imagepreprocessor:
     
     # Pre-processing methods
     # Get grayscale images
@@ -53,7 +53,7 @@ class preprocessor:
         return cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
 
     # Pre-process wrapper function (edit accordingly)
-    def pre_process(self, image):
+    def preprocess(self, image):
         image = self.get_grayscale(image)
         image = self.thresholding(image)
         return image
