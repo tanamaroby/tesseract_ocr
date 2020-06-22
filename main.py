@@ -28,7 +28,7 @@ image_orientation = imageorientation.imageorientation() # Detect orientation
 # Process from image to string and write into file
 preprocessed_image = image_preprocessor.preprocess(img)
 boxed_image = image_boxer.box_image(img)
-output = pytesseract.image_to_string(preprocessed_image)
+output = pytesseract.image_to_string(preprocessed_image, lang='eng')
 
 # Detect skew
 image_orientation.detect_angle(img)
