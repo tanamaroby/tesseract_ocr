@@ -55,5 +55,4 @@ class imagepreprocessor:
     # Pre-process wrapper function (edit accordingly)
     def preprocess(self, image):
         image = self.get_grayscale(image)
-        image = self.thresholding(image)
         return image

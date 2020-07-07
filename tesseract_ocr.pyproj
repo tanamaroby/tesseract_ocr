@@ -30,6 +30,9 @@
     </Compile>
     <Compile Include="main.py" />
     <Compile Include="imagepreprocessor.py" />
+    <Compile Include="idprocessor.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="documents\" />
@@ -40,9 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="documents\Invoice.pdf" />
+    <Content Include="documents\PANCard.png" />
+    <Content Include="documents\PANCard2.jpeg" />
+    <Content Include="documents\PANCard3.jpeg" />
     <Content Include="generated\images\boxed_image.png" />
     <Content Include="generated\images\preprocessed_image.png" />
-    <Content Include="generated\text\output.txt" />
+    <Content Include="generated\text\processedoutput.txt" />
+    <Content Include="generated\text\rawoutput.txt" />
     <Content Include="images\page_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
