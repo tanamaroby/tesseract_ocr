@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="crop.py" />
     <Compile Include="imageorientation.py">
       <SubType>Code</SubType>
     </Compile>
@@ -39,18 +40,17 @@
     <Folder Include="generated\" />
     <Folder Include="generated\images\" />
     <Folder Include="generated\text\" />
-    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="documents\Invoice.pdf" />
     <Content Include="documents\PANCard.png" />
     <Content Include="documents\PANCard2.jpeg" />
     <Content Include="documents\PANCard3.jpeg" />
+    <Content Include="documents\PANCard4.png" />
     <Content Include="generated\images\boxed_image.png" />
     <Content Include="generated\images\preprocessed_image.png" />
     <Content Include="generated\text\processedoutput.txt" />
     <Content Include="generated\text\rawoutput.txt" />
-    <Content Include="images\page_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
