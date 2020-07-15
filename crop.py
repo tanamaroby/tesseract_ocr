@@ -5,6 +5,7 @@ import glob
 import os
 
 from pprint import pprint as pp
+from PIL import Image
 
 class crop: 
 
@@ -15,15 +16,25 @@ class crop:
         self.debug_mode = False
 
     # quick cropping methods
-    def crop_left_half(image):
-        cropped_img = image[:, 0:image.shape[0]//2]
+    # keep left half
+    def crop_left_half(self, image):
+
+        # Dimensions
+        top = 0
+        bottom = image.shape[0]
+        left = 0
+        right = int(image.shape[1] * 7/10) # Only keep 70%
+
+        cropped_img = image[top:bottom, left:right]
         return cropped_img
 
-    def crop_bottom_half(image):
+    # keep bottom half
+    def crop_bottom_half(self, image):
         cropped_img = image[image.shape[0]//2:image.shape[0]]
         return cropped_img
 
-    def crop_top_half(image):
+    # keep top half
+    def crop_top_half(self, image):
         cropped_img = image[0:image.shape[0]//2]
         return cropped_img
 
@@ -121,7 +132,7 @@ class crop:
         # Show image
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
         cv2.imshow(window_name, image)
-        image_width, image_height = get_image_width_height(image)
+        image_width, image_height = self.get_image_width_height(image)
         #cv2.resizeWindow(window_name, image_width, image_height)
 
         # Wait before closing
@@ -129,7 +140,7 @@ class crop:
         cv2.destroyAllWindows()
 
     def cut_of_top(image, pixel):
-        image_width, image_height = get_image_width_height(image)
+        image_width, image_height = self.get_image_width_height(image)
 
         # startY, endY, startX, endX coordinates
         new_y = 0+pixel
@@ -137,7 +148,7 @@ class crop:
         return image
 
     def cut_of_bottom(image, pixel):
-        image_width, image_height = get_image_width_height(image)
+        image_width, image_height = self.get_image_width_height(image)
 
         # startY, endY, startX, endX coordinates
         new_height = image_height-pixel
@@ -146,6 +157,7 @@ class crop:
 
     def crop(self, image):
         image = self.detect_box(image)
+        image = self.crop_left_half(image)
         return image
 
 
