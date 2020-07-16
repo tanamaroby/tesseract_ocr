@@ -97,7 +97,7 @@ class OCR:
                 output = new_output
             elif new_score == old_score:
                 if 'name' in new_output and 'name' in old_output:
-                    output = new_output if (new_output['name'] > old_output['name']) else old_output
+                    output = new_output if (len(new_output['name']) > len(old_output['name'])) else old_output
                 else:
                     output = old_output
             else:
