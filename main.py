@@ -1,4 +1,6 @@
 # Library imports
+import os
+import argparse
 import cv2
 import pytesseract
 import numpy as np
