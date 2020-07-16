@@ -17,25 +17,29 @@ class crop:
 
     # quick cropping methods
     # keep left half
-    def crop_left_half(self, image):
+    def crop_left_half(self, image, proportion):
 
         # Dimensions
         top = 0
         bottom = image.shape[0]
         left = 0
-        right = int(image.shape[1] * 7/10) # Only keep 70%
+        right = int(image.shape[1] * proportion)
 
         cropped_img = image[top:bottom, left:right]
         return cropped_img
 
     # keep bottom half
-    def crop_bottom_half(self, image):
-        cropped_img = image[image.shape[0]//2:image.shape[0]]
+    def crop_bottom_half(self, image, proportion):
+        top = int(image.shape[0] * proportion)
+        bot = image.shape[0]
+        cropped_img = image[top:bot]
         return cropped_img
 
     # keep top half
-    def crop_top_half(self, image):
-        cropped_img = image[0:image.shape[0]//2]
+    def crop_top_half(self, image, proportion):
+        top = 0
+        bot = int(image.shape[0] * (1-proportion))
+        cropped_img = image[top:bot]
         return cropped_img
 
     def get_image_width_height(self, image):
