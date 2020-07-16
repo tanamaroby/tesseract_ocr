@@ -42,6 +42,9 @@
     <Folder Include="generated\text\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="documents\Bankstatement1.pdf" />
+    <Content Include="documents\Bankstatement2.pdf" />
+    <Content Include="documents\Bankstatement3.pdf" />
     <Content Include="documents\PANCard.png" />
     <Content Include="documents\PANCard2.jpeg" />
     <Content Include="documents\PANCard3.jpeg" />
