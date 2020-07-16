@@ -4,7 +4,7 @@ class idprocessor:
 
     # Checks if a string has numbers
     def hasnumbers(self, input):
-        return bool(re.search(r'/d', input))
+        return bool(re.search(r'\d', input))
 
     # Checking for names
     # Checking for all UPPER CASE words and obtaining name by process of elimination
