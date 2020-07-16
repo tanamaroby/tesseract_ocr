@@ -9,23 +9,10 @@ class idprocessor:
     # Checking for names
     # Checking for all UPPER CASE words and obtaining name by process of elimination
     def namevalidator(self, input):
-        inputlines = input.splitlines()
-
-        # Go through the input line by line
-        for line in inputlines:
-
-            # Only concerns upper case lines
-            if line.isupper():
-
-                # Ensuring that it is not PAN Number
-                if not self.hasnumbers(line):
-
-                    # Removing common keyword for the PAN Card titles
-                    bannedwords = ["INCOME", "TAX", "DEPARTMENT", "GOVT", "OF", "INDIA"]
-                    if not any(word in line for word in bannedwords):
-                        return line
-
-        return "Name not found!"
+        # Ensuring that it is not PAN Number
+        if not self.hasnumbers(input):
+            return input
+        return False
 
     # Checking output for PANNumber, returns the number if found
     def pannumbervalidator(self, input):
