@@ -20,7 +20,7 @@ class idprocessor:
         if regexmatch is not None:
             return regexmatch.group()
         else:
-            return "PAN not found!"
+            return False
 
     # Checking output for Date of Birth, returns the number if found
     def datevalidator(self, input):
@@ -28,7 +28,7 @@ class idprocessor:
         if regexmatch is not None:
             return regexmatch.group()
         else: 
-            return "Date of birth not found!"
+            return False
 
     def postprocess(self, input):
         name = self.namevalidator(input)
