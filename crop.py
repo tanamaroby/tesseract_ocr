@@ -159,11 +159,6 @@ class crop:
         image = image[0:new_height, 0:image_width]
         return image
 
-    def crop(self, image):
-        image = self.detect_box(image)
-        image = self.crop_left_half(image)
-        return image
-
 
 #for file_iterator in glob.iglob(path_in):
 #    image = cv2.imread(file_iterator)

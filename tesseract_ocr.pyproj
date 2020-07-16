@@ -42,15 +42,10 @@
     <Folder Include="generated\text\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="documents\Invoice.pdf" />
     <Content Include="documents\PANCard.png" />
     <Content Include="documents\PANCard2.jpeg" />
     <Content Include="documents\PANCard3.jpeg" />
     <Content Include="documents\PANCard4.png" />
-    <Content Include="generated\images\cropped_image.png" />
-    <Content Include="generated\images\preprocessed_image.png" />
-    <Content Include="generated\text\processedoutput.txt" />
-    <Content Include="generated\text\rawoutput.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
