@@ -1,34 +1,62 @@
 import re
+import processor
 
-class idprocessor: 
+class idprocessor(processor.processor):
 
-    # Checks if a string has numbers
-    def hasnumbers(self, input):
-        return bool(re.search(r'\d', input))
+    def __init__(self):
+        super().__init__()
+        # Cut proportion for old version of the PANCard
+        self.old_proportion = dict()
+        self.old_proportion['left'] = 0.7
 
-    # Checking for names
-    # Checking for all UPPER CASE words and obtaining name by process of elimination
-    def namevalidator(self, input):
-        # Ensuring that it is not PAN Number
-        if not self.hasnumbers(input):
-            return input
-        return False
+        # Cut proportion for new version of the PANCard
+        self.new_proportion = dict()
+        self.new_proportion['bot'] = 0.25
+        self.new_proportion['left'] = 0.7
 
-    # Checking output for PANNumber, returns the number if found
-    def pannumbervalidator(self, input):
-        regexmatch = re.search(r'[A-Z]{5}[0-9]{4}[A-Z]', input)
-        if regexmatch is not None:
-            return regexmatch.group()
-        else:
-            return False
 
-    # Checking output for Date of Birth, returns the number if found
-    def datevalidator(self, input):
-        regexmatch = re.search(r'\d{2}[-/]\d{2}[-/]\d{4}', input)
-        if regexmatch is not None:
-            return regexmatch.group()
-        else: 
-            return False
+    def get_score(self, output):
+        # Confidence score of the reading
+        fields = ['name', 'dob', 'pan_number']
+        score = 0
+        for field in fields:
+            if field in output and output[field]:
+                score += 1
+        return score
+
+    def crop_old(self, img):
+        # Crop the image according to the old PANCard proportion specified
+        cropped_image = self.image_cropper.detect_box(img) # image_cropper.crop(img)
+        cropped_image = self.image_cropper.crop_left_half(cropped_image, self.old_proportion['left'])
+        return cropped_image
+
+    def crop_new(self, img):
+        # Crop the image according to the new PANCard proportion specified
+        cropped_image = self.image_cropper.detect_box(img) # image_cropper.crop(img)
+        cropped_image = self.image_cropper.crop_bottom_half(cropped_image, self.new_proportion['bot'])
+        cropped_image = self.image_cropper.crop_left_half(cropped_image, self.new_proportion['left'])
+        return cropped_image
+
+    def extract(self, img, basename, callback):
+        # Process the output for both old and new PANCard versions
+        cropped_image = self.crop_new(img)
+        new_output = callback.process(cropped_image, basename, "new")
+        new_score = self.get_score(new_output)
+
+        cropped_image = self.crop_old(img)
+        old_output = callback.process(cropped_image, basename, "old")
+        old_score = self.get_score(old_output)
+
+        # Comparing confidence score for both processes to determine the PANCard version
+        output = old_output
+        if new_score > old_score:
+            output = new_output
+        elif new_score == old_score:
+            if 'name' in new_output and 'name' in old_output:
+                output = new_output if (len(new_output['name']) > len(old_output['name'])) else old_output
+            else:
+                output = old_output
+        return output
 
     def postprocess(self, input):
         processed_id = dict()
