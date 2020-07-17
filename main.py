@@ -28,7 +28,8 @@ class OCR:
         self.image_boxer = imageboxer.imageboxer() # Boxer
         self.image_orientation = imageorientation.imageorientation() # Detect orientation
         self.image_cropper = crop.crop() # Cropping tool
-        self.output_postprocessor = idprocessor.idprocessor() # Process the output
+        self.id_postprocessor = idprocessor.idprocessor() # Process the output
+        self.output_postprocessor = processor.processor()
 
 
     def process(self, cropped_image, basename, type):
@@ -42,27 +43,14 @@ class OCR:
         utility.save_img(preprocessed_image, cropped_image, basename + type)
         return processed_id
 
-    def get_paths(self, filepath):
-        file_paths = list()
-        ## Checking if the file given is PDF or Image format
-        #if ('.pdf' in filepath):
-        #    # In the case of multiple pages
-        #    pages = convert_from_path(filepath)
-        #    image_counter = 1
-        #    for page in pages:
-        #        filename = "page_" + str(image_counter) + ".png"
-        #        page.save('generated/images/' + filename, 'PNG')
-        #        image_counter = image_counter + 1
-        #        file_paths.append('generated/images/' + filename)
-        #else:
-        #    file_paths.append(filepath)
-
-        file_paths.append(filepath)
-        return file_paths
+    def get_handler(self, type):
+        if type == "id":
+            self.output_postprocessor = self.id_postprocessor
+        return
 
 
-
-    def process_id(self):
+    def get_text(self, type):
+        self.get_handler(type)
         outputs = list()
         for file in self.filepath:
             img = cv2.imread(file)
@@ -81,5 +69,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(args)
     ocr = OCR(args.fn)
-    final_output = ocr.process_id()
+    final_output = ocr.get_text("id")
     print("final", final_output)
