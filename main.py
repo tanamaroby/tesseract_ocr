@@ -4,7 +4,7 @@ import argparse
 import cv2
 import pytesseract
 import numpy as np
-from pdf2image import convert_from_path
+
 
 # Self-defined classes imports
 import imagepreprocessor
@@ -12,6 +12,8 @@ import imageboxer
 import imageorientation
 import idprocessor
 import crop
+import utility
+import processor
 
 filepath = 'documents/PANCard3.jpeg'
 
@@ -19,7 +21,7 @@ class OCR:
     def __init__(self, path):
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
         # Converting PDF to PNG when necessary
-        self.filepath = self.get_paths(path)
+        self.filepath = utility.get_paths(path)
 
         # Initiating all the tools
         self.image_preprocessor = imagepreprocessor.imagepreprocessor() # Pre-processor
@@ -36,8 +38,8 @@ class OCR:
 
         # Processing the output
         processedoutput, processed_id = self.output_postprocessor.postprocess(output)
-        self.save_output(output, processedoutput, basename + type)
-        self.save_img(preprocessed_image, cropped_image, basename + type)
+        utility.save_output(output, processedoutput, basename + type)
+        utility.save_img(preprocessed_image, cropped_image, basename + type)
         return processed_id
 
     def get_paths(self, filepath):
@@ -70,20 +72,7 @@ class OCR:
             outputs.append(output)
         return outputs
 
-    def save_output(self, output, processed_output, fn):
-        # Writing into file for documentation
-        with open('generated/text/' + fn + 'rawoutput.txt', 'w+') as file:
-            file.write(output)
-            file.close()
-        # Writing processed output
-        with open('generated/text/' + fn + 'processedoutput.txt', 'w+') as file:
-            file.write(processed_output)
-            file.close()
 
-    def save_img(self, preprocessed_image, cropped_image, fn):
-        # Save preprocessed images for debugging
-        cv2.imwrite("generated/images/" + fn + "preprocessed_image.png", preprocessed_image)
-        cv2.imwrite("generated/images/" + fn + "cropped_image.png", cropped_image)
 
 if __name__ == "__main__":
     # only execute if main script
