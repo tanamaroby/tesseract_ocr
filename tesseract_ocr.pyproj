@@ -34,6 +34,8 @@
     <Compile Include="idprocessor.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="processor.py" />
+    <Compile Include="utility.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="documents\" />
@@ -46,6 +48,7 @@
     <Content Include="documents\PANCard2.jpeg" />
     <Content Include="documents\PANCard3.jpeg" />
     <Content Include="documents\PANCard4.png" />
+    <Content Include="documents\PANCard5.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

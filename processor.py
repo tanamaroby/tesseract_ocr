@@ -2,6 +2,8 @@ import crop
 import re
 
 class processor:
+    # This class concerns all processor functions
+    # Parent class for all the more specific processor classes
     def __init__(self):
         self.image_cropper = crop.crop() # Cropping tool
 

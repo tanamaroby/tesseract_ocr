@@ -29,8 +29,7 @@ class OCR:
         self.image_orientation = imageorientation.imageorientation() # Detect orientation
         self.image_cropper = crop.crop() # Cropping tool
         self.id_postprocessor = idprocessor.idprocessor() # Process the output
-        self.output_postprocessor = processor.processor()
-
+        self.output_postprocessor = processor.processor() # General processor to be made more specific depending on image being read. 
 
     def process(self, cropped_image, basename, type):
         # Process from image to string
@@ -44,12 +43,13 @@ class OCR:
         return processed_id
 
     def get_handler(self, type):
+        # Molding the general processor into a more specific processor for certain images. 
         if type == "id":
             self.output_postprocessor = self.id_postprocessor
         return
 
-
     def get_text(self, type):
+        # Returning a formatted data extracted from the image
         self.get_handler(type)
         outputs = list()
         for file in self.filepath:
