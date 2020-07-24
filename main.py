@@ -15,8 +15,6 @@ import crop
 import utility
 import processor
 
-filepath = 'documents/PANCard3.jpeg'
-
 class OCR:
     def __init__(self, path):
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -59,7 +57,6 @@ class OCR:
             output = self.output_postprocessor.extract(img, basename, self)
             outputs.append(output)
         return outputs
-
 
 
 if __name__ == "__main__":

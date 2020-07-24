@@ -42,13 +42,17 @@
     <Folder Include="generated\" />
     <Folder Include="generated\images\" />
     <Folder Include="generated\text\" />
+    <Folder Include="docs\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="docs\DevGuide.md" />
+    <Content Include="docs\Usage.md" />
     <Content Include="documents\PANCard.png" />
     <Content Include="documents\PANCard2.jpeg" />
     <Content Include="documents\PANCard3.jpeg" />
     <Content Include="documents\PANCard4.png" />
     <Content Include="documents\PANCard5.jpeg" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
