@@ -35,6 +35,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="processor.py" />
+    <Compile Include="test.py" />
     <Compile Include="utility.py" />
   </ItemGroup>
   <ItemGroup>
